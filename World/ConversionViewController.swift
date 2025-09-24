@@ -69,9 +69,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func fahrenheitFieldEditingChanged(_ textField: UITextField) {
-        // Set label
-        if let text = textField.text, let value = Double(text) {
-                fahrenheitValue = Measurement(value: value, unit: .fahrenheit)
+        // Set label - locale-independent 
+        if let text = textField.text, let number = numberFormatter.number(from: text) {
+                fahrenheitValue = Measurement(value: number.doubleValue, unit: .fahrenheit)
             } else {
                 fahrenheitValue = nil
             }        }
